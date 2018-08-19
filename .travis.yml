@@ -1,0 +1,5 @@
+branches:
+  - dev
+language: ruby
+env:
+  - CHEF_VERSION=14.3.37
