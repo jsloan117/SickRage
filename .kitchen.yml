@@ -1,0 +1,78 @@
+---
+driver:
+  name: vagrant
+  box_check_update: true
+
+provisioner:
+  name: chef_zero
+  product_version: <%= ENV['CHEF_VERSION'] || 'current' %>
+  log_level: <%= ENV['CHEF_LOG_LEVEL'] || "auto" %>
+#  roles_path: 'test/roles'
+#  data_bags_path: 'test/data_bags'
+#  encrypted_data_bag_secret_key_path: 'test/encrypted_data_bag_secret'
+#  environments_path: 'test/environments'
+#  client_rb:
+#    environment: 'sickrage_environment'
+  always_update_cookbooks: <%= !ENV['CI'] %>
+
+verifier:
+  name: inspec
+
+platforms:
+#  - name: ubuntu-16.04
+#  - name: centos-7
+#  - name: generic/fedora28
+#  - name: generic/fedora27
+#  - name: generic/fedora25
+#  - name: bento/fedora-21
+  - name: ubuntu/xenial64
+#  - name: ubuntu/bionic64
+#  - name: generic/debian8
+#  - name: generic/debian9
+#  - name: akif/linuxmint-19-xfce-64bit
+
+suites:
+  - name: default
+    run_list:
+      - recipe[SickRage::default]
+    verifier:
+      inspec_tests:
+        - test/integration/default
+    attributes:
+    includes:
+      - centos-7
+
+  - name: debian
+    run_list:
+      - recipe[SickRage::default]
+    verifier:
+      inspec_tests:
+        - test/integration/debian
+    attributes:
+    includes:
+      - generic/debian8
+      - generic/debian9
+
+  - name: ubuntu
+    run_list:
+      - recipe[SickRage::default]
+    verifier:
+      inspec_tests:
+        - test/integration/ubuntu
+    attributes:
+    includes:
+      - ubuntu/xenial64
+      - ubuntu/bionic64
+      - akif/linuxmint-19-xfce-64bit
+
+  - name: fedora
+    run_list:
+      - recipe[SickRage::default]
+    verifier:
+      inspec_tests:
+        - test/integration/fedora
+    attributes:
+    includes:
+      - generic/fedora25
+      - generic/fedora27
+      - generic/fedora28

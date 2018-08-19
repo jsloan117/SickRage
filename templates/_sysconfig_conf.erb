@@ -1,0 +1,1 @@
+DAEMON_ARGS="--datadir <%= node['sickrage']['directory']['data_dir'] %> --config <%= node['sickrage']['directory']['data_dir'] %>/config.ini --nolaunch -q -d -p <%= node['sickrage']['listen_port'] %> --pidfile <%= node['sickrage']['directory']['pid_dir'] %>/sickrage.pid"
