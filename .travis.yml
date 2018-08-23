@@ -1,5 +1,6 @@
 branches:
-  - dev
+  only:
+    - master
 language: ruby
 cache: bundler
 rvm:
