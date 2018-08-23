@@ -1,11 +1,16 @@
----
+version: "2"
 engines:
   duplication:
     enabled: true
     config:
       languages:
       - ruby
+plugins:
   fixme:
+    enabled: true
+  foodcritic:
+    enabled: true
+  markdownlint:
     enabled: true
   rubocop:
     enabled: true
