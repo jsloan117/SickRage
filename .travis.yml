@@ -1,5 +1,9 @@
 branches:
   - dev
 language: ruby
+cache: bundler
 env:
   - CHEF_VERSION=14.3.37
+script:
+- bundle exec cookstyle
+- bundle exec foodcritic -f any .
