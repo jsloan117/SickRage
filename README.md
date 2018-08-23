@@ -2,6 +2,7 @@
 
 ![License](https://img.shields.io/badge/License-GPLv3-blue.svg)
 [![Build Status](https://travis-ci.org/jsloan117/SickRage.svg?branch=dev)](https://travis-ci.org/jsloan117/SickRage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/73965b6fa7df316fd9ce/maintainability)](https://codeclimate.com/github/jsloan117/SickRage/maintainability)
 
 TODO: This cookbook is designed to install and allow you to configure sickrage a well maintained fork of sickbeard.
 
