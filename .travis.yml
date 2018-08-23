@@ -2,6 +2,8 @@ branches:
   - dev
 language: ruby
 cache: bundler
+rvm:
+- 2.5.1
 env:
   - CHEF_VERSION=14.3.37
 script:
