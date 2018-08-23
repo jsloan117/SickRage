@@ -1,0 +1,18 @@
+[Unit]
+Description=SickRage Daemon
+After=network.target
+
+[Service]
+EnvironmentFile=
+User=<%= node['sickrage']['user'] %>
+Group=<%= node['sickrage']['group'] %>
+Type=forking
+ExecStart=<%= node['python']['binary'] %> <%= node['sickrage']['binary'] %> --datadir <%= node['sickrage']['directory']['data_dir'] %> --config <%= node['sickrage']['directory']['data_dir'] %>/config.ini --nolaunch -q -d -p <%= node['sickrage']['listen_port'] %> --pidfile <%= node['sickrage']['directory']['pid_dir'] %>/sickrage.pid
+PIDFile=<%= node['sickrage']['directory']['pid_dir'] %>/sickrage.pid
+GuessMainPID=no
+Restart=always
+RestartSec=5
+Nice=<%= node['sickrage']['nice_value'] %>
+
+[Install]
+WantedBy=multi-user.target
