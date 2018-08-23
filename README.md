@@ -1,5 +1,8 @@
 # SickRage Cookbook
 
+![License](https://img.shields.io/badge/License-GPLv3-blue.svg)
+[![Build Status](https://travis-ci.org/jsloan117/SickRage.svg?branch=dev)](https://travis-ci.org/jsloan117/SickRage)
+
 TODO: This cookbook is designed to install and allow you to configure sickrage a well maintained fork of sickbeard.
 
 - Debian9 default python = 2.7.13, /usr/local/bin is grouped by 'staff' /usr/bin/python -c 'import ssl' >/dev/null 2>&1 && echo 'installed' || echo 'not installed'
@@ -183,10 +186,9 @@ setup_firewall 'firewall_setup' do
 end
 ```
 
-### License & Authors
+### Authors & License
 
 ---
-![License](https://img.shields.io/badge/License-GPLv3-blue.svg)
 
 Authors: Jonathan Sloan
 
