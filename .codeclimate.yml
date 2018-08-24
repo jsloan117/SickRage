@@ -1,5 +1,5 @@
 version: "2"
-engines:
+plugins:
   duplication:
     enabled: true
     config:
@@ -13,8 +13,6 @@ engines:
     enabled: true
   rubocop:
     enabled: true
-  paths:
-  - "**.rb"
 exclude_patterns:
 - "spec/"
 - "test/"
