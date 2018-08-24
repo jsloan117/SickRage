@@ -1,11 +1,10 @@
 version: "2"
-engines:
+plugins:
   duplication:
     enabled: true
     config:
       languages:
       - ruby
-plugins:
   fixme:
     enabled: true
   foodcritic:
