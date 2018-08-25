@@ -8,17 +8,7 @@ cache: bundler
 rvm:
 - 2.5.1
 env:
-  global:
-    - CODECOV_TOKEN="923bd74d-6279-416a-b617-2220631b10e9"
-    - CC_TEST_REPORTER_ID=6c7a965660251fc88690793d74fa40ed2c34e3ba60097054a591c2bf9dcf85ac
-    - CHEF_VERSION=14.3.37
-before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+  - CHEF_VERSION=14.3.37
 script:
 - bundle exec cookstyle
 - bundle exec foodcritic -f any .
-after_script:
-  - ./cc-test-reporter -t simplecov after-build -o coverage/codeclimate.json --exit-code $TRAVIS_TEST_RESULT
-  - if [[ "$TRAVIS_TEST_RESULT" == 0 ]]; then ./cc-test-reporter upload-coverage; fi
