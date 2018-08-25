@@ -8,7 +8,15 @@ cache: bundler
 rvm:
 - 2.5.1
 env:
-  - CHEF_VERSION=14.3.37
+  global:
+    - CC_TEST_REPORTER_ID=6c7a965660251fc88690793d74fa40ed2c34e3ba60097054a591c2bf9dcf85ac
+    - CHEF_VERSION=14.3.37
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 script:
 - bundle exec cookstyle
 - bundle exec foodcritic -f any .
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

@@ -24,7 +24,7 @@ error = ''
 def recipe_list
   include_recipe 'yum-epel'
   include_recipe 'yumgroup'
-  include_recipe 'SickRage::install_SickRage'
+  include_recipe 'SickRage::install_sickrage'
 end
 
 if node['platform'] == 'centos' && node['platform_version'].to_i >= 7
