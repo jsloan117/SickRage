@@ -6,9 +6,6 @@
 
 TODO: This cookbook is designed to install and allow you to configure sickrage a well maintained fork of sickbeard.
 
-- Debian9 default python = 2.7.13, /usr/local/bin is grouped by 'staff' /usr/bin/python -c 'import ssl' >/dev/null 2>&1 && echo 'installed' || echo 'not installed'
-- <https://repl.it/repls/AwareFeistyNonlinearprogramming>
-
 ---
 
 ## Requirements
@@ -172,11 +169,6 @@ if you put `sysfw` to `false` it will fall back to using `iptables` and will dis
 ```ruby
 setup_firewall 'firewall_setup' do
   services 'sickrage'
-  action :create
-end
-
-setup_firewall 'firewall_setup' do
-  services %w(openssh sickrage)
   action :create
 end
 

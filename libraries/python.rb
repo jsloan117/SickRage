@@ -10,7 +10,7 @@ module SickRageCookbook
   module Helpers
     # Python
     module Python
-      def install_python_depends
+      def install_depends
         case node['platform']
         when 'centos', 'fedora'
           yumgroup 'Development tools' do
@@ -41,7 +41,7 @@ module SickRageCookbook
         File.exist?("#{new_resource.install_path}/bin/pip#{new_resource.p_version}")
       end
 
-      def download_python_package
+      def download_package
         remote_file "/opt/Python-#{new_resource.version}.tar.xz" do
           source "#{new_resource.python_url}/#{new_resource.version}/Python-#{new_resource.version}.tar.xz"
           owner 'root'
@@ -67,8 +67,8 @@ module SickRageCookbook
         end
       end
 
-      def install_pip_package
-        bash 'pip_install' do
+      def pip_install
+        bash 'pipinstall' do
           user 'root'
           cwd '/opt'
           code <<-GET_PIP

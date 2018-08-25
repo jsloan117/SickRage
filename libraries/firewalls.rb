@@ -4,8 +4,6 @@
 #
 # Copyright:: 2018, Jonathan Sloan, GPL v3.
 #
-# FIXME: Firewalld seems to not wanna start sometimes? The firewalld_check being executed thought?
-#
 module SickRageCookbook
   require 'chef/mixin/shell_out'
   # Helpers
@@ -32,33 +30,32 @@ module SickRageCookbook
             service_state('firewalld', 'enable')
             ruby_block 'check_firewalld' do
               block do
-                check_firewalld_rule
+                check_firewalld
               end
               action :run
             end
-            # check_firewalld_rule
+            # check_firewalld
           when 'debian'
-            check_ipt_rule
+            check_ipt
           when 'linuxmint', 'ubuntu'
             service_state('ufw', 'enable')
-            check_ufw_rule
+            check_ufw
           end
         else
           case node['platform']
           when 'centos', 'fedora'
             service_state('firewalld', 'disable')
-            check_ipt_rule
+            check_ipt
           when 'debian'
-            check_ipt_rule
+            check_ipt
           when 'linuxmint', 'ubuntu'
             service_state('ufw', 'disable')
-            check_ipt_rule
+            check_ipt
           end
         end
       end
 
-      def check_firewalld_rule
-        # TODO: See if I can loop though service w/ firewall-cmd like ufw
+      def check_firewalld
         shell_out!('firewall-cmd --reload')
         get_zone = shell_out!('firewall-cmd --get-default-zone')
         zone = get_zone.stdout.chomp
@@ -68,7 +65,7 @@ module SickRageCookbook
         shell_out!('firewall-cmd --reload') if sr_service == 'no'
       end
 
-      def check_ipt_rule
+      def check_ipt
         apt_update
         apt_package 'iptables-persistent'
         check_rule = shell_out("iptables -C INPUT -p tcp -m tcp --dport #{new_resource.port} -m conntrack --ctstate NEW -j ACCEPT; echo $?")
@@ -76,13 +73,12 @@ module SickRageCookbook
         rule_exists != '0' && shell_out!("iptables -A INPUT -p tcp -m tcp --dport #{new_resource.port} -m conntrack --ctstate NEW -j ACCEPT")
       end
 
-      def check_ufw_rule
+      def check_ufw
         %W(openssh #{new_resource.services}).each do |service|
           check_rule = shell_out!('ufw status')
           check_rule.stdout =~ /^#{service}/
           next if check_rule.stdout.empty?
           shell_out!("ufw allow #{service}")
-          # REVIEW: Believe I'm executing the enable & reload twice, only need once.
           shell_out!('ufw', 'enable', input: 'yes')
           shell_out!('ufw reload')
         end

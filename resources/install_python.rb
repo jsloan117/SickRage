@@ -38,18 +38,18 @@ default_action :install
 # end
 
 action :install do
-  install_python_depends
-  download_python_package
+  install_depends
+  download_package
   compile_python
-  install_pip_package
+  pip_install
 end
 
 # action :install do
 #  converge_if_changed do
-#    install_python_depends
-#    download_python_package
+#    install_depends
+#    download_package
 #    compile_python
-#    install_pip_package
+#    pip_install
 #  end
 # end
 

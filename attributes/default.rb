@@ -20,9 +20,6 @@ default['sickrage']['binary'] = "#{node['sickrage']['directory']['install_dir']}
 # Use firewall frontends (Firewalld/UFW) if true, if false use iptables
 default['firewall']['use_frontend'] = true
 
-# Only a fresh install will take place if this is false
-# default['sickrage']['config_enabled'] = 'true'
-
 # Python >= 2.7.10
 default['python']['url'] = 'http://www.python.org/ftp/python'
 default['python']['prefix'] = '/usr/local'
