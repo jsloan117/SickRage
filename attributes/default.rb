@@ -32,8 +32,8 @@ default['python']['pip'] = false
 default['python']['pip_binary'] = "#{default['python']['prefix']}/bin/pip#{default['python']['pversion']}"
 
 # Git Options
-default['git']['url'] = 'https://github.com/SickRage/SickRage.git'
+default['git']['url'] = 'https://github.com/SickChill/SickChill.git'
 default['git']['revision'] = 'master'
 
-# Get from running this command: git ls-remote https://github.com/SickRage/SickRage.git master
+# Get from running this command: git ls-remote https://github.com/SickChill/SickChill.git master
 # default['git']['reference'] = '0e727649748ec38c5bba69f3f97c9e7b794d56df'

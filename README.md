@@ -64,7 +64,7 @@ default['python']['pip'] = false
 default['python']['pip_binary'] = "#{default['python']['prefix']}/bin/pip#{default['python']['pversion']}"
 
 # Git Options
-default['git']['url'] = 'https://github.com/SickRage/SickRage.git'
+default['git']['url'] = 'https://github.com/SickChill/SickChill.git'
 default['git']['revision'] = 'master'
 ```
 
@@ -93,7 +93,7 @@ default['git']['revision'] = 'master'
 | default['python']['upgrade']                    | false                                                                       |
 | default['python']['pip']                        | false                                                                       |
 | default['python']['pip_binary']                 | "#{default['python']['prefix']}/bin/pip#{default['python']['pversion']}"    |
-| default['git']['url']                           | '<https://github.com/SickRage/SickRage.git>'                                |
+| default['git']['url']                           | '<https://github.com/SickChill/SickChill.git>'                                |
 | default['git']['revision']                      | 'master'                                                                    |
 
 ## Usage
