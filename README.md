@@ -3,6 +3,7 @@
 ![License](https://img.shields.io/badge/License-GPLv3-blue.svg)
 [![Build Status](https://travis-ci.org/jsloan117/SickRage.svg?branch=dev)](https://travis-ci.org/jsloan117/SickRage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/73965b6fa7df316fd9ce/maintainability)](https://codeclimate.com/github/jsloan117/SickRage/maintainability)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjsloan117%2FSickRage.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjsloan117%2FSickRage?ref=badge_shield)
 
 TODO: This cookbook is designed to install and allow you to configure sickrage a well maintained fork of sickbeard.
 
@@ -186,3 +187,6 @@ end
 Authors: Jonathan Sloan
 
 License: GPLv3.0
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjsloan117%2FSickRage.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjsloan117%2FSickRage?ref=badge_large)
